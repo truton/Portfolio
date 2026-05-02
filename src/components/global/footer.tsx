@@ -22,11 +22,11 @@ export function Footer() {
         {/* --- Branding & Copyright --- */}
         <div className="flex flex-col items-center md:items-start gap-2">
           <span className="text-2xl font-bold tracking-tight">
-            YN<span className="text-primary">.</span>
+            Truton<span className="text-primary">.</span>
           </span>
           <p className="text-sm text-muted-foreground mt-1 text-center md:text-left">
-            © {currentYear} {t.hero.name}. {t.footer.copyright}
-          </p>
+             © {currentYear} Truton. {t.footer.copyright}
+           </p>
         </div>
 
         {/* --- Social & Platform Links --- */}

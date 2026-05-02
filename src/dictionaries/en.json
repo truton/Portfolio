@@ -4,7 +4,12 @@
     "headline": "I Build Fast, Reliable Web Applications & MVPs",
     "subheadline": "Full-Stack Developer. First-time clients get a free technical audit and a discount on their first MVP project.",
     "cta_primary": "Start a Project",
-    "cta_secondary": "View Tech Stack"
+    "cta_secondary": "View Tech Stack",
+    "greeting": "Hi, I'm",
+    "name": "Your Name",
+    "tagline": "Full-Stack Developer & MVP Builder",
+    "description": "I help startups and small businesses turn ideas into production-ready products — fast, clean, and scalable.",
+    "offer": "🎁 Discount on the first project & Free Consultation"
   },
   "nav": {
     "services": "Services",
