@@ -198,7 +198,7 @@ export function Navbar() {
           href="#"
           className="text-lg font-bold tracking-tight text-foreground transition-opacity hover:opacity-80"
         >
-          YN<span className="text-primary">.</span>
+          Truton<span className="text-primary">.</span>
         </a>
 
         {/* --- Desktop nav links ------------------------------------ */}

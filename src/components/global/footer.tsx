@@ -25,7 +25,7 @@ export function Footer() {
             Truton<span className="text-primary">.</span>
           </span>
           <p className="text-sm text-muted-foreground mt-1 text-center md:text-left">
-             © {currentYear} Truton. {t.footer.copyright}
+             © {currentYear} Truton {t.footer.copyright}
            </p>
         </div>
 
