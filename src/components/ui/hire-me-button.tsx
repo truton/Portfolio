@@ -8,13 +8,14 @@ import { cn } from "@/lib/utils";
 
 const GITHUB_URL = "https://github.com/";
 
-interface HireMeButtonProps extends Omit<ButtonProps, "children"> {
+interface HireMeButtonProps extends Omit<ButtonProps, "children" | "className"> {
   buttonClassName?: string;
+  modalClassName?: string;
 }
 
 export function HireMeButton({
-  className,
   buttonClassName,
+  modalClassName,
   ...buttonProps
 }: HireMeButtonProps) {
   const { t } = useTranslation();
@@ -42,7 +43,7 @@ export function HireMeButton({
     <>
       <Button
         {...buttonProps}
-        className={cn(buttonClassName, buttonProps.className)}
+        className={cn(buttonClassName)}
         onClick={(event) => {
           buttonProps.onClick?.(event);
           if (!event.defaultPrevented) {
@@ -58,7 +59,7 @@ export function HireMeButton({
           className={cn(
             "fixed inset-0 z-50 flex items-center justify-center p-4",
             "bg-background/70 backdrop-blur-md",
-            className
+            modalClassName
           )}
           role="dialog"
           aria-modal="true"
