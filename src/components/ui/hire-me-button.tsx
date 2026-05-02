@@ -6,9 +6,12 @@ import { Button, type ButtonProps } from "@/components/ui/button";
 import { useTranslation } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-const GITHUB_URL = "https://github.com/";
+const GITHUB_URL = "https://github.com/truton";
 
-interface HireMeButtonProps extends Omit<ButtonProps, "children" | "className"> {
+interface HireMeButtonProps extends Omit<
+  ButtonProps,
+  "children" | "className"
+> {
   buttonClassName?: string;
   modalClassName?: string;
 }
@@ -59,7 +62,7 @@ export function HireMeButton({
           className={cn(
             "fixed inset-0 z-50 flex items-center justify-center p-4",
             "bg-background/70 backdrop-blur-md",
-            modalClassName
+            modalClassName,
           )}
           role="dialog"
           aria-modal="true"
@@ -69,7 +72,7 @@ export function HireMeButton({
           <div
             className={cn(
               "w-full max-w-lg rounded-2xl border border-border/70",
-              "bg-card/95 p-6 shadow-2xl shadow-black/25 sm:p-7"
+              "bg-card/95 p-6 shadow-2xl shadow-black/25 sm:p-7",
             )}
             onClick={(event) => event.stopPropagation()}
           >
@@ -85,7 +88,7 @@ export function HireMeButton({
                 aria-label="Close modal"
                 className={cn(
                   "rounded-md p-1.5 text-muted-foreground transition-colors",
-                  "hover:bg-muted hover:text-foreground"
+                  "hover:bg-muted hover:text-foreground",
                 )}
                 onClick={() => setOpen(false)}
               >
