@@ -4,8 +4,6 @@ import { useTranslation } from "@/lib/i18n";
 
 /** Replace these with actual URLs */
 const GITHUB_URL = "https://github.com/";
-const UPWORK_URL = "https://www.upwork.com/";
-const FIVERR_URL = "https://www.fiverr.com/";
 
 /**
  * Global Footer
@@ -29,7 +27,7 @@ export function Footer() {
            </p>
         </div>
 
-        {/* --- Social & Platform Links --- */}
+        {/* --- Social Links --- */}
         <div className="flex items-center gap-8">
           <a
             href={GITHUB_URL}
@@ -38,22 +36,6 @@ export function Footer() {
             className="text-sm font-bold tracking-wide text-muted-foreground hover:text-foreground transition-colors"
           >
             GitHub
-          </a>
-          <a
-            href={UPWORK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-bold tracking-wide text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Upwork
-          </a>
-          <a
-            href={FIVERR_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-bold tracking-wide text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Fiverr
           </a>
         </div>
       </div>

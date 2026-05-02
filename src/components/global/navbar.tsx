@@ -9,11 +9,10 @@ import {
   ChevronDown,
   Menu,
   X,
-  ExternalLink,
 } from "lucide-react";
 import { useTranslation } from "@/lib/i18n";
 import { locales, type Locale } from "@/types/i18n";
-import { Button } from "@/components/ui/button";
+import { HireMeButton } from "@/components/ui/hire-me-button";
 import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------ */
@@ -22,9 +21,6 @@ import { cn } from "@/lib/utils";
 
 /** Navigation anchor links — order matches navbar display. */
 const NAV_LINKS = ["services", "process", "background"] as const;
-
-/** Placeholder CTA link — update with real Upwork/Fiverr URL later. */
-const HIRE_URL = "https://www.upwork.com/";
 
 /* ------------------------------------------------------------------ */
 /*  Sub-components                                                    */
@@ -224,13 +220,7 @@ export function Navbar() {
           <LanguageSwitcher />
           <ThemeDropdown />
 
-          {/* CTA — directs to Upwork per platform compliance rules */}
-          <a href={HIRE_URL} target="_blank" rel="noopener noreferrer">
-            <Button size="sm" variant="primary" className="gap-1.5">
-              {t.nav.hire_me}
-              <ExternalLink className="h-3 w-3" />
-            </Button>
-          </a>
+          <HireMeButton size="sm" variant="primary" />
         </div>
 
         {/* --- Mobile hamburger ------------------------------------- */}
@@ -284,12 +274,7 @@ export function Navbar() {
           </div>
 
           <div className="px-4 pt-3">
-            <a href={HIRE_URL} target="_blank" rel="noopener noreferrer">
-              <Button variant="primary" fullWidth className="gap-1.5">
-                {t.nav.hire_me}
-                <ExternalLink className="h-4 w-4" />
-              </Button>
-            </a>
+            <HireMeButton variant="primary" fullWidth />
           </div>
         </div>
       </div>

@@ -1,11 +1,7 @@
 "use client";
 
 import { useTranslation } from "@/lib/i18n";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
-
-/** Replace these with actual URLs */
-const UPWORK_URL = "https://www.upwork.com/";
+import { HireMeButton } from "@/components/ui/hire-me-button";
 
 /**
  * CTA Section
@@ -29,16 +25,11 @@ export function CTASection() {
             <p className="mb-10 text-lg sm:text-xl text-primary-foreground/90 max-w-xl leading-relaxed">
               {t.cta.description}
             </p>
-            <a href={UPWORK_URL} target="_blank" rel="noopener noreferrer">
-              {/* Overriding the default primary button styles to be high-contrast inverse */}
-              <Button 
-                size="lg" 
-                className="bg-background text-foreground hover:bg-background/90 gap-2 h-14 px-10 text-base shadow-xl transition-transform hover:scale-105 active:scale-95"
-              >
-                {t.cta.button}
-                <ExternalLink className="h-4 w-4" />
-              </Button>
-            </a>
+            {/* Overriding the default primary button styles to be high-contrast inverse */}
+            <HireMeButton
+              size="lg"
+              buttonClassName="bg-background text-foreground hover:bg-background/90 h-14 px-10 text-base shadow-xl transition-transform hover:scale-105 active:scale-95"
+            />
           </div>
         </div>
       </div>

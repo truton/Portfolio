@@ -18,6 +18,12 @@
     "projects": "Projects",
     "hire_me": "Hire Me"
   },
+  "hire_modal": {
+    "button": "Hire Me",
+    "title": "Let's work together!",
+    "description": "If you found me on a freelance platform, please return to our chat there to discuss your project (to comply with platform terms). Otherwise, feel free to check out my open-source work.",
+    "link": "View Open Source (GitHub)"
+  },
   "about": {
     "title": "About Me",
     "description": "I'm a Full-Stack developer who specializes in building MVPs and solving complex technical challenges. I focus on clean architecture, performance, and delivering real business value."
@@ -89,7 +95,7 @@
   "cta": {
     "title": "Ready to Build Your MVP?",
     "description": "Get a discount on your first project and a free consultation to discuss your idea.",
-    "button": "Let's Talk on Upwork"
+    "button": "Hire Me"
   },
   "footer": {
     "copyright": "All rights reserved.",

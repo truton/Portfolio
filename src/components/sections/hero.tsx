@@ -2,7 +2,8 @@
 
 import { useTranslation } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, ArrowDown } from "lucide-react";
+import { HireMeButton } from "@/components/ui/hire-me-button";
+import { ArrowDown } from "lucide-react";
 
 /** Tech stack for the infinite marquee */
 const TECH_STACK = [
@@ -13,9 +14,6 @@ const TECH_STACK = [
   "Tailwind CSS",
   "Linux",
 ];
-
-/** CTA link — update with real Upwork/Fiverr URL later. */
-const HIRE_URL = "https://www.upwork.com/";
 
 /**
  * Hero Section
@@ -52,17 +50,11 @@ export function HeroSection() {
 
         {/* --- CTAs --- */}
         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <a
-            href={HIRE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto"
-          >
-            <Button size="lg" fullWidth className="gap-2 text-base h-14 px-8 shadow-lg shadow-primary/20">
-              {t.hero.cta_primary}
-              <ExternalLink className="h-4 w-4" />
-            </Button>
-          </a>
+          <HireMeButton
+            size="lg"
+            fullWidth
+            buttonClassName="w-full sm:w-auto text-base h-14 px-8 shadow-lg shadow-primary/20"
+          />
           <a href="#tech-stack" className="w-full sm:w-auto">
             <Button variant="secondary" size="lg" fullWidth className="gap-2 text-base h-14 px-8">
               {t.hero.cta_secondary}
