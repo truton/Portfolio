@@ -31,6 +31,8 @@ const accentPalettes: Record<Accent, AccentPalette> = {
 interface AccentContextValue {
   accent: Accent;
   setAccent: (accent: Accent) => void;
+  previewAccent: (accent: Accent) => void;
+  resetAccentPreview: () => void;
   accentPalettes: Record<Accent, AccentPalette>;
 }
 
@@ -50,11 +52,14 @@ function applyAccent(accent: Accent) {
 }
 
 export function AccentProvider({ children }: { children: ReactNode }) {
-  const [accent, setAccentState] = useState<Accent>(() => {
-    if (typeof window === "undefined") return "purple";
+  const [accent, setAccentState] = useState<Accent>("blue");
+
+  useEffect(() => {
     const storedAccent = localStorage.getItem(ACCENT_STORAGE_KEY);
-    return isAccent(storedAccent) ? storedAccent : "purple";
-  });
+    if (isAccent(storedAccent)) {
+      setAccentState(storedAccent);
+    }
+  }, []);
 
   useEffect(() => {
     applyAccent(accent);
@@ -66,13 +71,23 @@ export function AccentProvider({ children }: { children: ReactNode }) {
     applyAccent(nextAccent);
   }, []);
 
+  const previewAccent = useCallback((nextAccent: Accent) => {
+    applyAccent(nextAccent);
+  }, []);
+
+  const resetAccentPreview = useCallback(() => {
+    applyAccent(accent);
+  }, [accent]);
+
   const value = useMemo(
     () => ({
       accent,
       setAccent,
+      previewAccent,
+      resetAccentPreview,
       accentPalettes,
     }),
-    [accent, setAccent]
+    [accent, setAccent, previewAccent, resetAccentPreview]
   );
 
   return <AccentContext.Provider value={value}>{children}</AccentContext.Provider>;

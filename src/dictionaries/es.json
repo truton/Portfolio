@@ -1,50 +1,50 @@
 {
   "hero": {
-    "badge": "Available for work",
-    "headline": "I Build Fast, Reliable Web Applications & MVPs",
-    "subheadline": "Full-Stack Developer. First-time clients get a free technical audit and a discount on their first MVP project.",
-    "cta_primary": "Start a Project",
-    "cta_secondary": "View Tech Stack",
-    "greeting": "Hi, I'm",
-    "name": "Your Name",
-    "tagline": "Full-Stack Developer & MVP Builder",
-    "description": "I help startups and small businesses turn ideas into production-ready products — fast, clean, and scalable.",
-    "offer": "🎁 Discount on the first project & Free Consultation"
+    "badge": "Disponible para trabajar",
+    "headline": "Desarrollo aplicaciones web y MVPs rápidos y confiables",
+    "subheadline": "Desarrollador Full-Stack. Los nuevos clientes obtienen una auditoría técnica gratuita y un descuento en su primer proyecto MVP.",
+    "cta_primary": "Iniciar un proyecto",
+    "cta_secondary": "Ver tecnologías",
+    "greeting": "Hola, soy",
+    "name": "Tu Nombre",
+    "tagline": "Desarrollador Full-Stack y Creador de MVPs",
+    "description": "Ayudo a startups y pequeñas empresas a convertir ideas en productos listos para producción: rápidos, limpios y escalables.",
+    "offer": "🎁 Descuento en el primer proyecto y consulta gratuita"
   },
-  "nav": { "services": "Services", "process": "Process", "background": "Background", "projects": "Projects", "hire_me": "Hire Me" },
+  "nav": { "services": "Servicios", "process": "Proceso", "background": "Experiencia", "projects": "Proyectos", "hire_me": "Contrátame" },
   "hire_modal": {
-    "button": "Hire Me",
-    "title": "Let's work together!",
-    "description": "If you found me on a freelance platform, please return to our chat there to discuss your project (to comply with platform terms). Otherwise, feel free to check out my open-source work.",
-    "link": "View Open Source (GitHub)"
+    "button": "Contrátame",
+    "title": "¡Trabajemos juntos!",
+    "description": "Si me encontraste en una plataforma de trabajo freelance, por favor regresa a nuestro chat allí para discutir tu proyecto (para cumplir con los términos de la plataforma). De lo contrario, no dudes en explorar mi trabajo de código abierto.",
+    "link": "Ver código abierto (GitHub)"
   },
   "about": {
-    "title": "About Me",
-    "description": "I'm a Full-Stack developer who specializes in building MVPs and solving complex technical challenges. I focus on clean architecture, performance, and delivering real business value."
+    "title": "Sobre mí",
+    "description": "Soy un desarrollador Full-Stack especializado en crear MVPs y resolver desafíos técnicos complejos. Me enfoco en una arquitectura limpia, rendimiento y entregar valor comercial real."
   },
-  "services": { "title": "What I Do", "subtitle": "Services tailored for startups and growing businesses" },
+  "services": { "title": "Qué hago", "subtitle": "Servicios adaptados a startups y empresas en crecimiento" },
   "services_items": {
-    "mvp": { "title": "MVP Development", "description": "Fast time-to-market. Transform your idea into a production-ready application quickly and efficiently." },
-    "backend": { "title": "Custom Backend APIs", "description": "Scalable and secure architecture using Node.js, Express, and PostgreSQL." },
-    "frontend": { "title": "Frontend Development", "description": "Responsive, fast, and modern user interfaces built with React, Next.js, and Tailwind CSS." }
+    "mvp": { "title": "Desarrollo de MVP", "description": "Rápido tiempo de comercialización. Transforma tu idea en una aplicación lista para producción de manera rápida y eficiente." },
+    "backend": { "title": "APIs Backend personalizadas", "description": "Arquitectura escalable y segura utilizando Node.js, Express y PostgreSQL." },
+    "frontend": { "title": "Desarrollo Frontend", "description": "Interfaces de usuario responsivas, rápidas y modernas creadas con React, Next.js y Tailwind CSS." }
   },
-  "process": { "title": "My Process", "subtitle": "How we go from idea to reality" },
+  "process": { "title": "Mi proceso", "subtitle": "Cómo pasamos de la idea a la realidad" },
   "process_items": {
-    "discovery": { "title": "1. Discovery", "description": "Understanding the problem, defining requirements, and planning the technical architecture." },
-    "development": { "title": "2. Development", "description": "Writing clean, scalable code with regular updates and transparent communication." },
-    "delivery": { "title": "3. Delivery & Support", "description": "Deployment, documentation, handover, and ongoing support to ensure everything runs smoothly." }
+    "discovery": { "title": "1. Descubrimiento", "description": "Comprender el problema, definir los requisitos y planificar la arquitectura técnica." },
+    "development": { "title": "2. Desarrollo", "description": "Escritura de código limpio y escalable con actualizaciones periódicas y comunicación transparente." },
+    "delivery": { "title": "3. Entrega y soporte", "description": "Despliegue, documentación, entrega y soporte continuo para asegurar que todo funcione sin problemas." }
   },
-  "background": { "title": "Engineering Background", "subtitle": "Beyond standard web development, I thrive on solving low-level challenges and architecting scalable systems." },
+  "background": { "title": "Experiencia en ingeniería", "subtitle": "Más allá del desarrollo web estándar, destaco en la resolución de desafíos de bajo nivel y el diseño de sistemas escalables." },
   "background_items": {
-    "linux": { "title": "Infrastructure & Linux Admin", "description": "Extensive experience in Linux server administration, configuring custom hosting environments, and managing resilient infrastructure for game servers and web apps." },
-    "bots": { "title": "High-Load Community Bots", "description": "Developed and deployed custom Discord bots serving large-scale communities of up to 40,000 members. Handled API integrations, automated moderation, and complex backend logic." },
-    "hardware": { "title": "Hardware Hacking & Home Servers", "description": "Successfully engineered a low-power home server by flashing custom firmware onto a mobile device, gaining root access, and overclocking it to handle continuous web hosting and file synchronization." }
+    "linux": { "title": "Infraestructura y administración de Linux", "description": "Amplia experiencia en administración de servidores Linux, configuración de entornos de alojamiento personalizados y gestión de infraestructura resiliente para servidores de juegos y aplicaciones web." },
+    "bots": { "title": "Bots comunitarios de alta carga", "description": "Desarrollo e implementación de bots de Discord personalizados para comunidades grandes de hasta 40,000 miembros. Manejo de integraciones de API, moderación automatizada y lógica backend compleja." },
+    "hardware": { "title": "Hardware Hacking y servidores domésticos", "description": "Diseñé con éxito un servidor doméstico de bajo consumo instalando firmware personalizado en un dispositivo móvil, obteniendo acceso root y haciéndole overclocking para manejar alojamiento web continuo y sincronización de archivos." }
   },
-  "projects": { "title": "Selected Projects", "subtitle": "Real problems. Real solutions. Real results.", "view_case_study": "View Case Study", "view_source": "View Source" },
-  "tech_stack": { "title": "Tech Stack", "subtitle": "Tools I use to build fast, reliable software" },
-  "cta": { "title": "Ready to Build Your MVP?", "description": "Get a discount on your first project and a free consultation to discuss your idea.", "button": "Hire Me" },
-  "footer": { "copyright": "All rights reserved.", "built_with": "Built with Next.js & Tailwind CSS" },
-  "theme": { "light": "Light", "dark": "Dark", "system": "System" },
+  "projects": { "title": "Proyectos seleccionados", "subtitle": "Problemas reales. Soluciones reales. Resultados reales.", "view_case_study": "Ver caso de estudio", "view_source": "Ver código fuente" },
+  "tech_stack": { "title": "Stack tecnológico", "subtitle": "Herramientas que uso para crear software rápido y confiable" },
+  "cta": { "title": "¿Listo para crear tu MVP?", "description": "Obtén un descuento en tu primer proyecto y una consulta gratuita para hablar de tu idea.", "button": "Contrátame" },
+  "footer": { "copyright": "Todos los derechos reservados.", "built_with": "Creado con Next.js y Tailwind CSS" },
+  "theme": { "light": "Claro", "dark": "Oscuro", "system": "Sistema" },
   "language": { "en": "EN", "ru": "RU", "de": "DE", "fr": "FR", "es": "ES", "ar": "AR", "pl": "PL", "pt": "PT", "ua": "UA" },
-  "settings": { "title": "Settings", "appearance": "Appearance", "accent": "Accent Color", "language": "Language" }
+  "settings": { "title": "Configuración", "appearance": "Apariencia", "accent": "Color de acento", "language": "Idioma" }
 }

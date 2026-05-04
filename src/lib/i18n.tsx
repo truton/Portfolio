@@ -56,14 +56,18 @@ export function I18nProvider({
   children,
   initialLocale = defaultLocale,
 }: I18nProviderProps) {
-  const [locale, setLocaleState] = useState<Locale>(() => {
-    if (typeof window === "undefined") return initialLocale;
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
+
+  useEffect(() => {
     const storedLocale = localStorage.getItem(LOCALE_STORAGE_KEY);
-    if (storedLocale) return normalizeLocale(storedLocale);
-    const browserLocale = normalizeLocale(navigator.language);
-    localStorage.setItem(LOCALE_STORAGE_KEY, browserLocale);
-    return browserLocale;
-  });
+    if (storedLocale) {
+      setLocaleState(normalizeLocale(storedLocale));
+    } else {
+      const browserLocale = normalizeLocale(navigator.language);
+      localStorage.setItem(LOCALE_STORAGE_KEY, browserLocale);
+      setLocaleState(browserLocale);
+    }
+  }, []);
   const t = getDictionary(locale);
   const direction = locale === "ar" ? "rtl" : "ltr";
 

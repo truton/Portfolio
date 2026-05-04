@@ -1,50 +1,50 @@
 {
   "hero": {
-    "badge": "Available for work",
-    "headline": "I Build Fast, Reliable Web Applications & MVPs",
-    "subheadline": "Full-Stack Developer. First-time clients get a free technical audit and a discount on their first MVP project.",
-    "cta_primary": "Start a Project",
-    "cta_secondary": "View Tech Stack",
-    "greeting": "Hi, I'm",
-    "name": "Your Name",
-    "tagline": "Full-Stack Developer & MVP Builder",
-    "description": "I help startups and small businesses turn ideas into production-ready products — fast, clean, and scalable.",
-    "offer": "🎁 Discount on the first project & Free Consultation"
+    "badge": "متاح للعمل",
+    "headline": "أقوم ببناء تطبيقات ويب و MVPs سريعة وموثوقة",
+    "subheadline": "مطور Full-Stack. يحصل العملاء الجدد على تدقيق فني مجاني وخصم على مشروعهم الأول للـ MVP.",
+    "cta_primary": "ابدأ مشروعًا",
+    "cta_secondary": "عرض التقنيات",
+    "greeting": "مرحبًا، أنا",
+    "name": "اسمك",
+    "tagline": "مطور Full-Stack وباني MVPs",
+    "description": "أساعد الشركات الناشئة والصغيرة على تحويل الأفكار إلى منتجات جاهزة للإنتاج — بسرعة وكفاءة وقابلية للتوسع.",
+    "offer": "🎁 خصم على المشروع الأول واستشارة مجانية"
   },
-  "nav": { "services": "Services", "process": "Process", "background": "Background", "projects": "Projects", "hire_me": "Hire Me" },
+  "nav": { "services": "الخدمات", "process": "العملية", "background": "الخبرة", "projects": "المشاريع", "hire_me": "وظفني" },
   "hire_modal": {
-    "button": "Hire Me",
-    "title": "Let's work together!",
-    "description": "If you found me on a freelance platform, please return to our chat there to discuss your project (to comply with platform terms). Otherwise, feel free to check out my open-source work.",
-    "link": "View Open Source (GitHub)"
+    "button": "وظفني",
+    "title": "دعنا نعمل معًا!",
+    "description": "إذا وجدتني على منصة للعمل الحر، يرجى العودة إلى محادثتنا هناك لمناقشة مشروعك (للامتثال لشروط المنصة). بخلاف ذلك، لا تتردد في الاطلاع على أعمالي مفتوحة المصدر.",
+    "link": "عرض المصدر المفتوح (GitHub)"
   },
   "about": {
-    "title": "About Me",
-    "description": "I'm a Full-Stack developer who specializes in building MVPs and solving complex technical challenges. I focus on clean architecture, performance, and delivering real business value."
+    "title": "نبذة عني",
+    "description": "أنا مطور Full-Stack متخصص في بناء الـ MVPs وحل التحديات التقنية المعقدة. أركز على البنية النظيفة، الأداء، وتقديم قيمة حقيقية للأعمال."
   },
-  "services": { "title": "What I Do", "subtitle": "Services tailored for startups and growing businesses" },
+  "services": { "title": "ماذا أفعل", "subtitle": "خدمات مصممة للشركات الناشئة والأعمال المتنامية" },
   "services_items": {
-    "mvp": { "title": "MVP Development", "description": "Fast time-to-market. Transform your idea into a production-ready application quickly and efficiently." },
-    "backend": { "title": "Custom Backend APIs", "description": "Scalable and secure architecture using Node.js, Express, and PostgreSQL." },
-    "frontend": { "title": "Frontend Development", "description": "Responsive, fast, and modern user interfaces built with React, Next.js, and Tailwind CSS." }
+    "mvp": { "title": "تطوير MVP", "description": "وقت سريع للوصول إلى السوق. حوّل فكرتك إلى تطبيق جاهز للإنتاج بسرعة وكفاءة." },
+    "backend": { "title": "واجهات برمجة تطبيقات (API) مخصصة", "description": "بنية قابلة للتطوير وآمنة باستخدام Node.js و Express و PostgreSQL." },
+    "frontend": { "title": "تطوير الواجهات الأمامية", "description": "واجهات مستخدم متجاوبة وسريعة وحديثة مبنية باستخدام React و Next.js و Tailwind CSS." }
   },
-  "process": { "title": "My Process", "subtitle": "How we go from idea to reality" },
+  "process": { "title": "آلية عملي", "subtitle": "كيف ننتقل من الفكرة إلى الواقع" },
   "process_items": {
-    "discovery": { "title": "1. Discovery", "description": "Understanding the problem, defining requirements, and planning the technical architecture." },
-    "development": { "title": "2. Development", "description": "Writing clean, scalable code with regular updates and transparent communication." },
-    "delivery": { "title": "3. Delivery & Support", "description": "Deployment, documentation, handover, and ongoing support to ensure everything runs smoothly." }
+    "discovery": { "title": "1. الاستكشاف", "description": "فهم المشكلة، تحديد المتطلبات، والتخطيط للهندسة التقنية." },
+    "development": { "title": "2. التطوير", "description": "كتابة كود نظيف وقابل للتطوير مع تحديثات منتظمة وتواصل شفاف." },
+    "delivery": { "title": "3. التسليم والدعم", "description": "النشر والتوثيق والتسليم والدعم المستمر لضمان سير كل شيء بسلاسة." }
   },
-  "background": { "title": "Engineering Background", "subtitle": "Beyond standard web development, I thrive on solving low-level challenges and architecting scalable systems." },
+  "background": { "title": "الخلفية الهندسية", "subtitle": "أبعد من تطوير الويب القياسي، أزدهر في حل التحديات منخفضة المستوى وهندسة الأنظمة القابلة للتطوير." },
   "background_items": {
-    "linux": { "title": "Infrastructure & Linux Admin", "description": "Extensive experience in Linux server administration, configuring custom hosting environments, and managing resilient infrastructure for game servers and web apps." },
-    "bots": { "title": "High-Load Community Bots", "description": "Developed and deployed custom Discord bots serving large-scale communities of up to 40,000 members. Handled API integrations, automated moderation, and complex backend logic." },
-    "hardware": { "title": "Hardware Hacking & Home Servers", "description": "Successfully engineered a low-power home server by flashing custom firmware onto a mobile device, gaining root access, and overclocking it to handle continuous web hosting and file synchronization." }
+    "linux": { "title": "البنية التحتية وإدارة لينكس", "description": "خبرة واسعة في إدارة خوادم لينكس، تكوين بيئات الاستضافة المخصصة، وإدارة بنية تحتية مرنة لخوادم الألعاب وتطبيقات الويب." },
+    "bots": { "title": "روبوتات المجتمعات عالية الضغط", "description": "قمت بتطوير ونشر روبوتات Discord مخصصة تخدم مجتمعات كبيرة تصل إلى 40,000 عضو. تعاملت مع تكاملات API، والإشراف التلقائي، والمنطق الخلفي المعقد." },
+    "hardware": { "title": "تعديل الأجهزة والخوادم المنزلية", "description": "صممت بنجاح خادمًا منزليًا منخفض الطاقة عن طريق تفليش البرامج الثابتة المخصصة على جهاز محمول، والحصول على صلاحيات الروت، وزيادة سرعته للتعامل مع الاستضافة المستمرة ومزامنة الملفات." }
   },
-  "projects": { "title": "Selected Projects", "subtitle": "Real problems. Real solutions. Real results.", "view_case_study": "View Case Study", "view_source": "View Source" },
-  "tech_stack": { "title": "Tech Stack", "subtitle": "Tools I use to build fast, reliable software" },
-  "cta": { "title": "Ready to Build Your MVP?", "description": "Get a discount on your first project and a free consultation to discuss your idea.", "button": "Hire Me" },
-  "footer": { "copyright": "All rights reserved.", "built_with": "Built with Next.js & Tailwind CSS" },
-  "theme": { "light": "Light", "dark": "Dark", "system": "System" },
+  "projects": { "title": "مشاريع مختارة", "subtitle": "مشاكل حقيقية. حلول حقيقية. نتائج حقيقية.", "view_case_study": "عرض دراسة الحالة", "view_source": "عرض الكود المصدري" },
+  "tech_stack": { "title": "التقنيات المستخدمة", "subtitle": "الأدوات التي أستخدمها لبناء برامج سريعة وموثوقة" },
+  "cta": { "title": "هل أنت جاهز لبناء MVP الخاص بك؟", "description": "احصل على خصم على مشروعك الأول واستشارة مجانية لمناقشة فكرتك.", "button": "وظفني" },
+  "footer": { "copyright": "جميع الحقوق محفوظة.", "built_with": "تم بناؤه باستخدام Next.js و Tailwind CSS" },
+  "theme": { "light": "فاتح", "dark": "داكن", "system": "النظام" },
   "language": { "en": "EN", "ru": "RU", "de": "DE", "fr": "FR", "es": "ES", "ar": "AR", "pl": "PL", "pt": "PT", "ua": "UA" },
-  "settings": { "title": "Settings", "appearance": "Appearance", "accent": "Accent Color", "language": "Language" }
+  "settings": { "title": "الإعدادات", "appearance": "المظهر", "accent": "لون التمييز", "language": "اللغة" }
 }

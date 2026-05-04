@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Monitor, Menu, X, Settings } from "lucide-react";
 import { useTranslation } from "@/lib/i18n";
@@ -8,6 +8,7 @@ import { locales, type Locale } from "@/types/i18n";
 import { HireMeButton } from "@/components/ui/hire-me-button";
 import { cn } from "@/lib/utils";
 import { useAccent, type Accent } from "@/lib/accent";
+import { useFocusTrap } from "@/lib/use-focus-trap";
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                         */
@@ -28,7 +29,7 @@ const languageNames: Record<Locale, string> = {
   es: "Español",
   ar: "العربية",
   pl: "Polski",
-  pt: "Português",
+  pt: "Português (BR)",
   ua: "Українська",
 };
 
@@ -45,12 +46,27 @@ const accentOptions: Accent[] = ["purple", "blue", "teal", "pink", "orange"];
  */
 export function Navbar() {
   const { t, locale, setLocale, direction } = useTranslation();
-  const { setTheme, resolvedTheme, theme } = useTheme();
-  const { accent, setAccent, accentPalettes } = useAccent();
+  const { setTheme, theme } = useTheme();
+  const { accent, setAccent, previewAccent, resetAccentPreview, accentPalettes } = useAccent();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [scrollbarWidth, setScrollbarWidth] = useState(0);
+  const wasSettingsOpenRef = useRef(false);
+  const desktopSettingsButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileSettingsButtonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  useFocusTrap(panelRef, settingsOpen);
+
+  const focusVisibleSettingsTrigger = useCallback(() => {
+    const desktopButton = desktopSettingsButtonRef.current;
+    const mobileButton = mobileSettingsButtonRef.current;
+    if (desktopButton && desktopButton.offsetParent !== null) {
+      desktopButton.focus();
+      return;
+    }
+    mobileButton?.focus();
+  }, []);
 
   // Track scroll position for sticky header visual effect
   useEffect(() => {
@@ -64,19 +80,39 @@ export function Navbar() {
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = mobileOpen || settingsOpen ? "hidden" : "";
+    if (mobileOpen || settingsOpen) {
+      const width = window.innerWidth - document.documentElement.clientWidth;
+      setScrollbarWidth(width);
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${width}px`;
+    } else {
+      setScrollbarWidth(0);
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }
     return () => {
       document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     };
   }, [mobileOpen, settingsOpen]);
 
   useEffect(() => {
     function onEsc(event: KeyboardEvent) {
-      if (event.key === "Escape") setSettingsOpen(false);
+      if (event.key === "Escape") {
+        setSettingsOpen(false);
+        focusVisibleSettingsTrigger();
+      }
     }
     document.addEventListener("keydown", onEsc);
     return () => document.removeEventListener("keydown", onEsc);
-  }, []);
+  }, [focusVisibleSettingsTrigger]);
+
+  useEffect(() => {
+    if (!settingsOpen && wasSettingsOpenRef.current) {
+      focusVisibleSettingsTrigger();
+    }
+    wasSettingsOpenRef.current = settingsOpen;
+  }, [focusVisibleSettingsTrigger, settingsOpen]);
 
   const themeOptions = [
     { key: "dark" as const, icon: Moon },
@@ -84,7 +120,7 @@ export function Navbar() {
     { key: "system" as const, icon: Monitor },
   ];
 
-  const activeTheme = theme === "system" ? resolvedTheme ?? "dark" : theme ?? "dark";
+  const currentTheme = theme ?? "system";
 
   return (
     <>
@@ -95,8 +131,9 @@ export function Navbar() {
             ? "border-b border-border/60 bg-background/80 backdrop-blur-xl shadow-sm shadow-black/5"
             : "bg-transparent"
         )}
+        style={{ paddingRight: scrollbarWidth ? `${scrollbarWidth}px` : undefined }}
       >
-        <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8">
+        <nav className="relative mx-auto flex h-16 max-w-6xl items-center justify-between px-5 lg:px-8">
         {/* --- Logo / Name ------------------------------------------ */}
         <a
           href="#"
@@ -106,7 +143,7 @@ export function Navbar() {
         </a>
 
         {/* --- Desktop nav links ------------------------------------ */}
-        <ul className="hidden items-center gap-1 md:flex">
+        <ul className="hidden items-center justify-center gap-1 md:absolute md:start-1/2 md:flex md:-translate-x-1/2">
           {NAV_LINKS.map((key) => (
             <li key={key}>
               <a
@@ -126,8 +163,12 @@ export function Navbar() {
         {/* --- Desktop right actions -------------------------------- */}
         <div className="hidden items-center gap-3 md:flex">
           <button
+            ref={desktopSettingsButtonRef}
             onClick={() => setSettingsOpen(true)}
             aria-label="Open settings"
+            aria-haspopup="dialog"
+            aria-expanded={settingsOpen}
+            aria-controls="settings-sidebar"
             className="inline-flex items-center justify-center rounded-lg border border-border p-2.5 text-muted-foreground transition-colors hover:text-foreground hover:bg-muted cursor-pointer"
           >
             <Settings className="h-4 w-4" />
@@ -184,7 +225,11 @@ export function Navbar() {
             <div className="flex items-center gap-3 px-4">
               <button
                 onClick={() => setSettingsOpen(true)}
+                ref={mobileSettingsButtonRef}
                 aria-label="Open settings"
+                aria-haspopup="dialog"
+                aria-expanded={settingsOpen}
+                aria-controls="settings-sidebar"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:bg-muted hover:text-foreground cursor-pointer"
               >
                 <Settings className="h-4 w-4" />
@@ -201,24 +246,33 @@ export function Navbar() {
       <div
         className={cn(
           "fixed inset-0 z-[60] bg-background/55 backdrop-blur-sm transition-opacity",
-          settingsOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          settingsOpen ? "opacity-100 duration-300" : "pointer-events-none opacity-0 duration-200"
         )}
-        onClick={() => setSettingsOpen(false)}
+        onClick={() => {
+          setSettingsOpen(false);
+          focusVisibleSettingsTrigger();
+        }}
       />
 
       <aside
+        id="settings-sidebar"
         ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="settings-title"
+        aria-hidden={!settingsOpen}
         className={cn(
-          "fixed inset-y-0 end-0 z-[70] w-full max-w-sm border-s border-border bg-card/95 p-5 shadow-2xl transition-transform duration-300 sm:p-6",
+          "fixed inset-y-0 end-0 z-[70] w-full max-w-sm border-border bg-card/95 p-5 shadow-2xl backdrop-blur-xl transition-transform sm:p-6",
+          direction === "rtl" ? "border-e" : "border-s",
           settingsOpen
-            ? "translate-x-0"
+            ? "translate-x-0 duration-300 ease-out"
             : direction === "rtl"
-              ? "-translate-x-full"
-              : "translate-x-full"
+              ? "-translate-x-full duration-200 ease-in"
+              : "translate-x-full duration-200 ease-in"
         )}
       >
         <div className="mb-6 flex items-center justify-between">
-          <h3 className="text-xl font-semibold tracking-tight text-foreground">{t.settings.title}</h3>
+          <h3 id="settings-title" className="text-xl font-semibold tracking-tight text-foreground">{t.settings.title}</h3>
           <button
             onClick={() => setSettingsOpen(false)}
             aria-label="Close settings"
@@ -234,12 +288,12 @@ export function Navbar() {
             <div className="grid grid-cols-3 gap-2">
               {themeOptions.map((option) => {
                 const Icon = option.icon;
-                const isActive =
-                  option.key === "system" ? theme === "system" : activeTheme === option.key;
+                const isActive = currentTheme === option.key;
                 return (
                   <button
                     key={option.key}
                     onClick={() => setTheme(option.key)}
+                    aria-label={`Set ${t.theme[option.key]} theme`}
                     className={cn(
                       "inline-flex items-center justify-center gap-2 rounded-lg border px-2 py-2 text-xs transition-colors cursor-pointer",
                       isActive
@@ -264,10 +318,16 @@ export function Navbar() {
                   <button
                     key={item}
                     onClick={() => setAccent(item)}
+                    onMouseEnter={() => previewAccent(item)}
+                    onMouseLeave={resetAccentPreview}
+                    onFocus={() => previewAccent(item)}
+                    onBlur={resetAccentPreview}
                     aria-label={`Accent ${item}`}
                     className={cn(
-                      "h-9 w-9 rounded-full border-2 transition-transform cursor-pointer",
-                      isActive ? "scale-105 border-white shadow-sm shadow-white/30" : "border-transparent hover:scale-105"
+                      "h-9 w-9 rounded-full border-2 transition-transform cursor-pointer ring-offset-2 ring-offset-card",
+                      isActive
+                        ? "scale-105 border-card ring-2 ring-primary shadow-md shadow-black/20"
+                        : "border-transparent hover:scale-105"
                     )}
                     style={{ backgroundColor: accentPalettes[item].primary }}
                   />
@@ -283,15 +343,25 @@ export function Navbar() {
                 <button
                   key={loc}
                   onClick={() => setLocale(loc as Locale)}
+                  aria-label={`Set language ${languageNames[loc]}`}
                   className={cn(
-                    "flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors cursor-pointer",
+                    "flex items-center gap-3 rounded-lg border border-transparent px-3 py-2 text-sm transition-colors cursor-pointer text-start",
                     locale === loc
-                      ? "bg-primary/10 text-primary"
+                      ? "border-border bg-card text-foreground shadow-sm"
                       : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   )}
                 >
-                  <span className="font-medium">[{loc.toUpperCase()}]</span>
-                  <span>{languageNames[loc]}</span>
+                  <span
+                    className={cn(
+                      "inline-flex min-w-8 items-center justify-center rounded-md px-1.5 py-0.5 text-[11px] font-semibold tracking-wide",
+                      locale === loc
+                        ? "bg-primary/20 text-primary"
+                        : "bg-muted text-muted-foreground"
+                    )}
+                  >
+                    {loc.toUpperCase()}
+                  </span>
+                  <span className="text-start">{languageNames[loc]}</span>
                 </button>
               ))}
             </div>

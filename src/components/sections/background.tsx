@@ -48,10 +48,10 @@ export function BackgroundSection() {
                 <div className="pointer-events-none absolute -top-20 -end-20 h-48 w-48 rounded-full bg-primary/10 blur-3xl transition-transform duration-700 group-hover:scale-[2]" />
 
                 <div className={cn(
-                  "flex shrink-0 items-center justify-center rounded-2xl bg-muted/50 border border-border text-foreground transition-transform duration-500 group-hover:-translate-y-2 group-hover:bg-primary/10",
+                  "flex shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary transition-transform duration-500 group-hover:-translate-y-2",
                   isFeatured ? "h-20 w-20" : "h-16 w-16"
                 )}>
-                  <Icon className={cn("text-primary transition-transform duration-500 group-hover:scale-110", isFeatured ? "h-10 w-10" : "h-8 w-8")} />
+                  <Icon className={cn("transition-transform duration-500 group-hover:scale-110", isFeatured ? "h-10 w-10" : "h-8 w-8")} />
                 </div>
                 
                 <div className="flex flex-col z-10 relative">
