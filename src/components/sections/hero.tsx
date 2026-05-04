@@ -32,7 +32,7 @@ export function HeroSection() {
         
         {/* --- Pulsing Availability Badge --- */}
         <div className="inline-flex items-center rounded-full border border-border bg-muted/50 px-3.5 py-1.5 text-sm font-medium mb-8 backdrop-blur-sm">
-          <span className="flex h-2 w-2 rounded-full bg-green-500 mr-2.5 relative">
+          <span className="relative me-2.5 flex h-2 w-2 rounded-full bg-green-500">
             <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 animate-ping"></span>
           </span>
           {t.hero.badge}
@@ -67,8 +67,8 @@ export function HeroSection() {
       {/* --- Infinite Scrolling Marquee --- */}
       <div className="w-full mt-24 md:mt-32 flex overflow-hidden border-y border-border/40 bg-muted/10 py-6 relative">
         {/* Fade gradients for smooth scrolling effect on edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="absolute inset-y-0 start-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
+        <div className="absolute inset-y-0 end-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
         
         <div className="flex animate-marquee whitespace-nowrap group">
           {/* We duplicate the stack array a couple of times to ensure smooth infinite scroll */}

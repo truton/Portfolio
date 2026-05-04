@@ -1,7 +1,14 @@
 import type { Locale } from "@/types/i18n";
 
 import en from "@/dictionaries/en.json";
-import uk from "@/dictionaries/uk.json";
+import ru from "@/dictionaries/ru.json";
+import de from "@/dictionaries/de.json";
+import fr from "@/dictionaries/fr.json";
+import es from "@/dictionaries/es.json";
+import ar from "@/dictionaries/ar.json";
+import pl from "@/dictionaries/pl.json";
+import pt from "@/dictionaries/pt.json";
+import ua from "@/dictionaries/ua.json";
 
 /** Type derived from the English dictionary structure (source of truth). */
 export type Dictionary = typeof en;
@@ -9,7 +16,14 @@ export type Dictionary = typeof en;
 /** Map of all available dictionaries keyed by locale code. */
 const dictionaries: Record<Locale, Dictionary> = {
   en,
-  uk,
+  ru,
+  de,
+  fr,
+  es,
+  ar,
+  pl,
+  pt,
+  ua,
 };
 
 /**

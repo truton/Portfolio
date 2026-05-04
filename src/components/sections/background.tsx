@@ -15,7 +15,7 @@ export function BackgroundSection() {
   return (
     <section id="background" className="py-24 md:py-32 bg-muted/10 relative overflow-hidden">
       {/* Subtle background tech texture/gradient */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none -translate-y-1/2 translate-x-1/2" />
+      <div className="pointer-events-none absolute top-0 end-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-primary/5 blur-[100px]" />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
         <div className="text-center mb-16 md:mb-24">
@@ -45,7 +45,7 @@ export function BackgroundSection() {
                 )}
               >
                 {/* Techy abstract highlight on hover */}
-                <div className="absolute -right-20 -top-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl transition-transform duration-700 group-hover:scale-[2] pointer-events-none" />
+                <div className="pointer-events-none absolute -top-20 -end-20 h-48 w-48 rounded-full bg-primary/10 blur-3xl transition-transform duration-700 group-hover:scale-[2]" />
 
                 <div className={cn(
                   "flex shrink-0 items-center justify-center rounded-2xl bg-muted/50 border border-border text-foreground transition-transform duration-500 group-hover:-translate-y-2 group-hover:bg-primary/10",

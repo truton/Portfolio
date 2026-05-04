@@ -24,7 +24,7 @@ export function ProcessSection() {
 
         <div className="relative">
           {/* Vertical connecting line for desktop */}
-          <div className="hidden md:block absolute left-1/2 top-4 bottom-4 w-px bg-border -translate-x-1/2" />
+          <div className="absolute top-4 bottom-4 start-1/2 hidden w-px -translate-x-1/2 bg-border md:block" />
 
           <div className="space-y-12 md:space-y-0">
             {PROCESS_DATA.map((step, index) => {
@@ -52,7 +52,7 @@ export function ProcessSection() {
                   </div>
 
                   {/* Center Icon (Desktop only) */}
-                  <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 items-center justify-center rounded-full border-4 border-background bg-muted text-muted-foreground shadow-sm z-10 transition-colors duration-300 hover:bg-primary/10 hover:text-primary">
+                  <div className="absolute top-1/2 start-1/2 z-10 hidden h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-background bg-muted text-muted-foreground shadow-sm transition-colors duration-300 hover:bg-primary/10 hover:text-primary md:flex">
                     <Icon className="h-6 w-6" />
                   </div>
                 </div>

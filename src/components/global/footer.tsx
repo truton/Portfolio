@@ -21,7 +21,7 @@ export function Footer() {
           <span className="text-2xl font-bold tracking-tight">
             Truton<span className="text-primary">.</span>
           </span>
-          <p className="text-sm text-muted-foreground mt-1 text-center md:text-left">
+          <p className="mt-1 text-center text-sm text-muted-foreground md:text-start">
             © {currentYear} Truton {t.footer.copyright}
           </p>
         </div>

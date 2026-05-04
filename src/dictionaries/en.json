@@ -104,10 +104,23 @@
   "theme": {
     "light": "Light",
     "dark": "Dark",
-    "terminal": "Terminal"
+    "system": "System"
   },
   "language": {
     "en": "EN",
-    "uk": "UA"
+    "ru": "RU",
+    "de": "DE",
+    "fr": "FR",
+    "es": "ES",
+    "ar": "AR",
+    "pl": "PL",
+    "pt": "PT",
+    "ua": "UA"
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "accent": "Accent Color",
+    "language": "Language"
   }
 }

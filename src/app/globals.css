@@ -3,10 +3,10 @@
 /* =================================================================
    Theme Variables
    =================================================================
-   Three themes are supported via the `data-theme` attribute on <html>:
-   - dark  (default)
+   Two themes are supported via the `data-theme` attribute on <html>:
+   - dark
    - light
-   - terminal  (black bg, neon-green accents)
+   Accent color is controlled independently via CSS variables.
    ================================================================= */
 
 /* --- Dark Theme (Default) ---------------------------------------- */
@@ -17,12 +17,13 @@
   --muted: #1a1a1a;
   --muted-foreground: #a1a1a1;
   --border: #262626;
-  --primary: #3b82f6;
+  --primary: #8b5cf6;
   --primary-foreground: #ffffff;
-  --accent: #6366f1;
+  --accent: #a78bfa;
   --accent-foreground: #ffffff;
   --card: #111111;
   --card-foreground: #ededed;
+  --color-primary: var(--primary);
 }
 
 /* --- Light Theme ------------------------------------------------- */
@@ -32,27 +33,13 @@
   --muted: #f5f5f5;
   --muted-foreground: #6b6b6b;
   --border: #e5e5e5;
-  --primary: #2563eb;
+  --primary: #8b5cf6;
   --primary-foreground: #ffffff;
-  --accent: #4f46e5;
+  --accent: #a78bfa;
   --accent-foreground: #ffffff;
   --card: #f9f9f9;
   --card-foreground: #0a0a0a;
-}
-
-/* --- Terminal Theme ---------------------------------------------- */
-[data-theme="terminal"] {
-  --background: #000000;
-  --foreground: #00ff41;
-  --muted: #0a0a0a;
-  --muted-foreground: #00cc33;
-  --border: #003300;
-  --primary: #00ff41;
-  --primary-foreground: #000000;
-  --accent: #39ff14;
-  --accent-foreground: #000000;
-  --card: #050505;
-  --card-foreground: #00ff41;
+  --color-primary: var(--primary);
 }
 
 /* =================================================================
@@ -85,11 +72,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-/* Terminal theme: monospace override for the hacker aesthetic */
-[data-theme="terminal"] body {
-  font-family: var(--font-geist-mono), "Courier New", Courier, monospace;
 }
 
 /* =================================================================
