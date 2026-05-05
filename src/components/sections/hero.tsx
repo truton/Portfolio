@@ -4,6 +4,7 @@ import { useTranslation } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 import { HireMeButton } from "@/components/ui/hire-me-button";
 import { ArrowDown } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 /** Tech stack for the infinite marquee */
 const TECH_STACK = [
@@ -31,37 +32,45 @@ export function HeroSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center z-10 relative mt-10 sm:mt-16">
         
         {/* --- Pulsing Availability Badge --- */}
-        <div className="inline-flex items-center rounded-full border border-border bg-muted/50 px-3.5 py-1.5 text-sm font-medium mb-8 backdrop-blur-sm">
-          <span className="relative me-2.5 flex h-2 w-2 rounded-full bg-green-500">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 animate-ping"></span>
-          </span>
-          {t.hero.badge}
-        </div>
+        <ScrollReveal delay={0.1}>
+          <div className="inline-flex items-center rounded-full border border-border bg-muted/50 px-3.5 py-1.5 text-sm font-medium mb-8 backdrop-blur-sm">
+            <span className="relative me-2.5 flex h-2 w-2 rounded-full bg-green-500">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75 animate-ping"></span>
+            </span>
+            {t.hero.badge}
+          </div>
+        </ScrollReveal>
 
         {/* --- Headline --- */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 max-w-4xl leading-tight text-foreground">
-          {t.hero.headline}
-        </h1>
+        <ScrollReveal delay={0.2}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 max-w-4xl leading-tight text-foreground">
+            {t.hero.headline}
+          </h1>
+        </ScrollReveal>
 
         {/* --- Subheadline --- */}
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed">
-          {t.hero.subheadline}
-        </p>
+        <ScrollReveal delay={0.3}>
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-10 leading-relaxed">
+            {t.hero.subheadline}
+          </p>
+        </ScrollReveal>
 
         {/* --- CTAs --- */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <HireMeButton
-            size="lg"
-            fullWidth
-            buttonClassName="w-full sm:w-auto text-base h-14 px-8 shadow-lg shadow-primary/20"
-          />
-          <a href="#tech-stack" className="w-full sm:w-auto">
-            <Button variant="secondary" size="lg" fullWidth className="gap-2 text-base h-14 px-8">
-              {t.hero.cta_secondary}
-              <ArrowDown className="h-4 w-4" />
-            </Button>
-          </a>
-        </div>
+        <ScrollReveal delay={0.4}>
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <HireMeButton
+              size="lg"
+              fullWidth
+              buttonClassName="w-full sm:w-auto text-base h-14 px-8 shadow-lg shadow-primary/20"
+            />
+            <a href="#tech-stack" className="w-full sm:w-auto">
+              <Button variant="secondary" size="lg" fullWidth className="gap-2 text-base h-14 px-8">
+                {t.hero.cta_secondary}
+                <ArrowDown className="h-4 w-4" />
+              </Button>
+            </a>
+          </div>
+        </ScrollReveal>
       </div>
 
       {/* --- Infinite Scrolling Marquee --- */}
