@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   title: "Full-Stack Developer — MVP Builder & Problem Solver",
   description:
     "Hire a Full-Stack developer who ships fast. I build production-ready MVPs for startups and small businesses using React, Node.js, and PostgreSQL.",
+  other: {
+    freelancehunt: "a5dbe8899734671",
+  },
 };
 
 export default function RootLayout({
