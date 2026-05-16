@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Monitor, Menu, X, Settings } from "lucide-react";
 import { useTranslation } from "@/lib/i18n";
@@ -9,6 +10,8 @@ import { HireMeButton } from "@/components/ui/hire-me-button";
 import { cn } from "@/lib/utils";
 import { useAccent, type Accent } from "@/lib/accent";
 import { useFocusTrap } from "@/lib/use-focus-trap";
+import { useBodyScrollLock } from "@/lib/use-body-scroll-lock";
+import { useIsClient } from "@/lib/use-is-client";
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                         */
@@ -51,12 +54,13 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [scrollbarWidth, setScrollbarWidth] = useState(0);
+  const isClient = useIsClient();
   const wasSettingsOpenRef = useRef(false);
   const desktopSettingsButtonRef = useRef<HTMLButtonElement>(null);
   const mobileSettingsButtonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   useFocusTrap(panelRef, settingsOpen);
+  const scrollbarWidth = useBodyScrollLock(mobileOpen || settingsOpen);
 
   const focusVisibleSettingsTrigger = useCallback(() => {
     const desktopButton = desktopSettingsButtonRef.current;
@@ -77,24 +81,6 @@ export function Navbar() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileOpen || settingsOpen) {
-      const width = window.innerWidth - document.documentElement.clientWidth;
-      setScrollbarWidth(width);
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${width}px`;
-    } else {
-      setScrollbarWidth(0);
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    };
-  }, [mobileOpen, settingsOpen]);
 
   useEffect(() => {
     function onEsc(event: KeyboardEvent) {
@@ -243,35 +229,41 @@ export function Navbar() {
         </div>
       </header>
 
-      <div
-        className={cn(
-          "fixed inset-0 z-[60] bg-background/55 backdrop-blur-sm transition-opacity",
-          settingsOpen ? "opacity-100 duration-300" : "pointer-events-none opacity-0 duration-200"
-        )}
-        onClick={() => {
-          setSettingsOpen(false);
-          focusVisibleSettingsTrigger();
-        }}
-      />
+      {isClient
+        ? createPortal(
+            <>
+              <div
+                aria-hidden={!settingsOpen}
+                className={cn(
+                  "fixed inset-0 z-40 min-h-dvh w-full bg-background/55 backdrop-blur-sm transition-opacity",
+                  settingsOpen
+                    ? "pointer-events-auto opacity-100 duration-300"
+                    : "pointer-events-none opacity-0 duration-200",
+                )}
+                onClick={() => {
+                  setSettingsOpen(false);
+                  focusVisibleSettingsTrigger();
+                }}
+              />
 
-      <aside
-        id="settings-sidebar"
-        ref={panelRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="settings-title"
-        aria-hidden={!settingsOpen}
-        className={cn(
-          "fixed inset-y-0 end-0 z-[70] w-full max-w-sm border-border bg-card/95 p-5 shadow-2xl backdrop-blur-xl transition-transform sm:p-6",
-          direction === "rtl" ? "border-e" : "border-s",
-          settingsOpen
-            ? "translate-x-0 duration-300 ease-out"
-            : direction === "rtl"
-              ? "-translate-x-full duration-200 ease-in"
-              : "translate-x-full duration-200 ease-in"
-        )}
-      >
-        <div className="mb-6 flex items-center justify-between">
+              <aside
+                id="settings-sidebar"
+                ref={panelRef}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="settings-title"
+                aria-hidden={!settingsOpen}
+                className={cn(
+                  "fixed inset-y-0 end-0 z-50 flex h-dvh max-h-dvh w-full max-w-sm flex-col border-border bg-card/95 p-5 shadow-2xl backdrop-blur-xl transition-transform sm:p-6",
+                  direction === "rtl" ? "border-e" : "border-s",
+                  settingsOpen
+                    ? "translate-x-0 duration-300 ease-out"
+                    : direction === "rtl"
+                      ? "-translate-x-full duration-200 ease-in"
+                      : "translate-x-full duration-200 ease-in",
+                )}
+              >
+                <div className="mb-6 flex items-center justify-between">
           <h3 id="settings-title" className="text-xl font-semibold tracking-tight text-foreground">{t.settings.title}</h3>
           <button
             onClick={() => setSettingsOpen(false)}
@@ -282,7 +274,7 @@ export function Navbar() {
           </button>
         </div>
 
-        <div className="space-y-6">
+                <div className="space-y-6 overflow-y-auto">
           <div>
             <p className="mb-3 text-sm font-medium text-foreground">{t.settings.appearance}</p>
             <div className="grid grid-cols-3 gap-2">
@@ -338,7 +330,7 @@ export function Navbar() {
 
           <div>
             <p className="mb-3 text-sm font-medium text-foreground">{t.settings.language}</p>
-            <div className="flex max-h-[44vh] flex-col gap-1 overflow-y-auto pe-1">
+            <div className="flex max-h-[44dvh] flex-col gap-1 overflow-y-auto pe-1">
               {locales.map((loc) => (
                 <button
                   key={loc}
@@ -367,7 +359,11 @@ export function Navbar() {
             </div>
           </div>
         </div>
-      </aside>
+              </aside>
+            </>,
+            document.body,
+          )
+        : null}
     </>
   );
 }
